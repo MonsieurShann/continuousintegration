@@ -34,6 +34,14 @@ jobs:
       
     - name: Exécuter les tests
       run: python test_probe.py
+      
+    - name: Cache packages
+      uses: actions/cache@v2
+      with:
+        path: |
+          /var/cache/apt/archives
+        key: apt-${{ runner.os }}-${{ hashFiles('**/apt.*') }}
+      if: runner.os == 'Linux'
 
 
 
