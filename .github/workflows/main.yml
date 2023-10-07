@@ -16,38 +16,6 @@ jobs:
     - name: Set up Python
     - uses: actions/setup-python@v3
 
-    - name: Installer les dépendances
-      run: pip install -r requirements.txt
 
-    - name: Config git
-      run: git config --global user.name "MonsieurShann"
-      
-    - name: Config suite
-      run: git config --global user.name "shannsagouma.ss@gmail.com"
-
-    - name: Create bin dir
-      run: mkdir ~/bin
-
-    - name: Curl
-      run: curl https://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
-
-    - name: Droits repo
-      run: chmod a+x ~/bin/repo
-
-    - name: export path
-      run: export PATH=~/bin:$PATH
-
-    - name: mkdir var-fslc-yocto
-      run: mkdir /opt/var-fslc-yocto
-
-    - name: go there
-      run: cd /opt/var-fslc-yocto
-
-    - name: repo init
-      run: repo init -u https://github.com/varigit/variscite-bsp-platform.git -b dunfell -m default.xml
-
-    - name: repo sync
-      run: repo sync -j$(nproc)
-  
 
         
