@@ -5,9 +5,9 @@ def check_xhci_hcd():
         # Exécutez la commande 'lsmod' pour lister les modules chargés et recherchez 'xhci_hcd'
         output = subprocess.check_output(['lsmod']).decode('utf-8')
         if output != "" :
-            print("Le module watchdog a été chargé.")
+            print("output = ", output)
         else:
-            raise Exception("Le module watchdog n'a pas été chargé.")
+            raise Exception("Aucun drivers...")
     except Exception as e:
         print(f"Erreur : {e}")
         exit(1)
