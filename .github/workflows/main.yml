@@ -26,8 +26,6 @@ jobs:
       with:
         python-version: 3.x  # Spécifiez la version Python que vous utilisez
 
-    - name: touch dummy
-      run: touch dummy.txt
 
     - name: Installing my environnment
       run: |
