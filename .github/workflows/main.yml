@@ -1,0 +1,25 @@
+name: Python Test
+
+on:
+  push:
+    branches:
+      - main  # Le nom de votre branche principale
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout du code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x  # Spécifiez la version Python que vous utilisez
+
+    - name: Installer les dépendances
+      run: pip install -r requirements.txt  # Assurez-vous d'avoir un fichier requirements.txt
+
+    - name: Exécuter les tests
+      run: python test_probe.py  # Assurez-vous que test_probe.py se trouve dans le répertoire actuel
