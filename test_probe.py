@@ -3,7 +3,7 @@ import subprocess
 
 size = len(sys.argv)
 
-searched_drivers = ["xhci_hcd", "crc64"]
+searched_drivers = ["xhci_hcdfzepofj", "crc64"]
 
 def search_string_in_dmesg(searched_drivers):
     dmesg_output = subprocess.check_output(["sudo", "lsmod"]).decode("utf-8")
