@@ -1,4 +1,4 @@
-name: Python Test
+name: Yocto Check
 
 on:
   push:
@@ -6,22 +6,48 @@ on:
       - main  # Le nom de votre branche principale
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  build-and-test:
+    runs-on: ubuntu-18.04
 
     steps:
     - name: Checkout du code
       uses: actions/checkout@v3
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16  # Spécifiez la version Node.js que vous souhaitez utiliser
-
+      
     - name: Set up Python
-      uses: actions/setup-python@v3
-      with:
-        python-version: 3.x  # Spécifiez la version Python que vous utilisez
+    - uses: actions/setup-python@v3
 
-    - name: Exécuter les tests
-      run: python test_probe.py  # Assurez-vous que test_probe.py se trouve dans le répertoire actuel
+    - name: Installer les dépendances
+      run: pip install -r requirements.txt
+
+    - name: Config git
+      run: git config --global user.name "MonsieurShann"
+      
+    - name: Config suite
+      run: git config --global user.name "shannsagouma.ss@gmail.com"
+
+    - name: Create bin dir
+      run: mkdir ~/bin
+
+    - name: Curl
+      run: curl https://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+
+    - name: Droits repo
+      run: chmod a+x ~/bin/repo
+
+    - name: export path
+      run: export PATH=~/bin:$PATH
+
+    - name: mkdir var-fslc-yocto
+      run: mkdir /opt/var-fslc-yocto
+
+    - name: go there
+      run: cd /opt/var-fslc-yocto
+
+    - name: repo init
+      run: repo init -u https://github.com/varigit/variscite-bsp-platform.git -b dunfell -m default.xml
+
+    - name: repo sync
+      run: repo sync -j$(nproc)
+  
+
+        
