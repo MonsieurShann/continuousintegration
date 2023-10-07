@@ -4,13 +4,12 @@ def check_xhci_hcd():
     try:
         # Exécutez la commande 'lsmod' pour lister les modules chargés et recherchez 'xhci_hcd'
         output = subprocess.check_output(['lsmod']).decode('utf-8')
-        subprocess.run(["cd /"], shell=True)
-        directories = subprocess.check_output(["ls"]).decode('utf-8')
+        archives = subprocess.check_output(["ls /var/cache/apt/archives"], shell=True).decode('utf-8')
         installed_packages = subprocess.check_output(["apt list --installed"], shell=True)
-        if installed_packages != "" :
-            print("installed_packages = ", installed_packages)
+        if directories != "" :
+            print("archives = ", archives)
         else:
-            raise Exception("Aucun installed_packages...")
+            raise Exception("Aucune archives...")
     except Exception as e:
         print(f"Erreur : {e}")
         exit(1)
