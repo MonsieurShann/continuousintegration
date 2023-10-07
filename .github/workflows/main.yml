@@ -21,10 +21,10 @@ jobs:
     - name: touch dummy
       run: touch dummy.txt
 
-    - name: exexuting my script
+    - name: Installing my environnment
       run: |
-        chmod +x dummy_script.sh
-        ./dummy_script.sh
+        chmod +x install_env.sh
+        ./install_env.sh
       
     - name: Exécuter les tests
       run: python test_probe.py
