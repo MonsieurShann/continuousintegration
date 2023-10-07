@@ -1,16 +1,16 @@
-import sys
 import subprocess
 
-size = len(sys.argv)
+def check_xhci_hcd():
+    try:
+        # Exécutez la commande 'lsmod' pour lister les modules chargés et recherchez 'xhci_hcd'
+        output = subprocess.check_output(['lsmod']).decode('utf-8')
+        if 'xhci_hcd' in output:
+            print("Le module xhci_hcd a été chargé.")
+        else:
+            raise Exception("Le module xhci_hcd n'a pas été chargé.")
+    except Exception as e:
+        print(f"Erreur : {e}")
+        exit(1)
 
-searched_drivers = ["xhci_hcdfzepofj", "crc64"]
-
-def search_string_in_dmesg(searched_drivers):
-    dmesg_output = subprocess.check_output(["sudo", "lsmod"]).decode("utf-8")
-    if searched_drivers[0] in dmesg_output:
-        print("Trouve!!!")
-    else:
-        return -1
-
-search_string_in_dmesg(searched_drivers)
-
+if __name__ == "__main__":
+    check_xhci_hcd()
