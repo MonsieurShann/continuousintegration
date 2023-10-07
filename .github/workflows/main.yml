@@ -17,6 +17,10 @@ jobs:
       uses: actions/setup-python@v3  # Utilisez la version 2 de l'action setup-python
       with:
         python-version: 3.x  # Spécifiez la version Python que vous utilisez
+
+    - name: Probing xhci
+      run: modprobe xhci_hcd
+      
     - name: Exécuter les tests
       run: python test_probe.py
 
