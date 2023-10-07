@@ -6,7 +6,7 @@ def check_xhci_hcd():
         output = subprocess.check_output(['lsmod']).decode('utf-8')
         archives = subprocess.check_output(["ls /var/cache/apt/archives"], shell=True).decode('utf-8')
         installed_packages = subprocess.check_output(["apt list --installed"], shell=True)
-        if directories != "" :
+        if archives != "" :
             print("archives = ", archives)
         else:
             raise Exception("Aucune archives...")
