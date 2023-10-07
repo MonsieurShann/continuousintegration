@@ -14,7 +14,10 @@ jobs:
       uses: actions/checkout@v3
       
     - name: Set up Python
-    - uses: actions/setup-python@v3
+      uses: actions/setup-python@v3  # Utilisez la version 2 de l'action setup-python
+      with:
+        python-version: 3.x  # Spécifiez la version Python que vous utilisez
+
 
 
 
