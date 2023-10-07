@@ -13,10 +13,14 @@ jobs:
     - name: Checkout du code
       uses: actions/checkout@v2
 
-    - name: Set up Python with Node.js 16
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16  # Spécifiez la version Node.js que vous souhaitez utiliser
+
+    - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        node-version: 16
         python-version: 3.x  # Spécifiez la version Python que vous utilisez
 
     - name: Installer les dépendances
