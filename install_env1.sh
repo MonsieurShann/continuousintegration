@@ -20,3 +20,11 @@ mkdir ~/bin
 curl https://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
 export PATH=~/bin:$PATH
+mkdir /opt/var-fslc-yocto
+cd /opt/var-fslc-yocto
+
+repo init -u https://github.com/varigit/variscite-bsp-platform.git -b dunfell -m default.xml
+repo sync -j$(nproc)
+
+cd /opt/var-fslc-yocto
+ls -lstr .
