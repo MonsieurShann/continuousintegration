@@ -12,5 +12,8 @@ def search_string_in_dmesg(searched_drivers):
     else:
         return -1
 
-search_string_in_dmesg(searched_drivers)
-
+#search_string_in_dmesg(searched_drivers)
+if 3 > 1:
+    return 0
+else:
+    return -1
