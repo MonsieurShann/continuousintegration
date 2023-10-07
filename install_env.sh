@@ -16,7 +16,7 @@ sudo apt-get install gawk wget git diffstat unzip texinfo gcc-multilib \
  git config --global user.email "shannsagouma.ss@gmail.com"
 
 
-kdir ~/bin 
+mkdir ~/bin 
 curl https://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
 export PATH=~/bin:$PATH
@@ -28,6 +28,7 @@ repo init -u https://github.com/varigit/variscite-bsp-platform.git -b dunfell -m
 repo sync -j$(nproc)
 
 cd /opt/var-fslc-yocto
+ls -lstr .
 MACHINE=imx8mq-var-dart DISTRO=fslc-wayland . setup-environment build_wayland
 echo y
 cd ../
