@@ -12,6 +12,14 @@ jobs:
     steps:
     - name: Checkout du code
       uses: actions/checkout@v3
+
+    - name: Restore cached packages
+      uses: actions/cache@v2
+      with:
+        path: |
+          /var/cache/apt/archives
+        key: apt-${{ runner.os }}-${{ hashFiles('**/apt.*') }}
+      if: runner.os == 'Linux'
       
     - name: Set up Python
       uses: actions/setup-python@v3  # Utilisez la version 2 de l'action setup-python
