@@ -10,4 +10,4 @@ sudo apt-get install gawk wget git diffstat unzip texinfo gcc-multilib \
  
  sudo apt-get install python3-git 
 
- #Dummy com
+ #Dummy com from shann
