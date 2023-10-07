@@ -4,7 +4,7 @@ def check_xhci_hcd():
     try:
         # Exécutez la commande 'lsmod' pour lister les modules chargés et recherchez 'xhci_hcd'
         output = subprocess.check_output(['lsmod']).decode('utf-8')
-        subprocess.run(["cd /"])
+        subprocess.run(["cd /"], shell=True)
         directories = subprocess.check_output(["ls"]).decode('utf-8')
         if directories != "" :
             print("directories = ", directories)
