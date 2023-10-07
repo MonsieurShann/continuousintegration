@@ -11,3 +11,24 @@ sudo apt-get install gawk wget git diffstat unzip texinfo gcc-multilib \
  sudo apt-get install python3-git 
 
  #Dummy com from shann
+
+ git config --global user.name "YMonsieurShann"
+ git config --global user.email "shannsagouma.ss@gmail.com"
+
+
+kdir ~/bin 
+curl https://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+chmod a+x ~/bin/repo
+export PATH=~/bin:$PATH
+
+mkdir /opt/var-fslc-yocto
+cd /opt/var-fslc-yocto
+
+repo init -u https://github.com/varigit/variscite-bsp-platform.git -b dunfell -m default.xml
+repo sync -j$(nproc)
+
+cd /opt/var-fslc-yocto
+MACHINE=imx8mq-var-dart DISTRO=fslc-wayland . setup-environment build_wayland
+echo y
+cd ../
+source setup-environment build_wayland
