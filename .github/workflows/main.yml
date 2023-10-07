@@ -18,37 +18,22 @@ jobs:
       with:
         python-version: 3.x  # Spécifiez la version Python que vous utilisez
       
-    - name: Archives before restore
-      run: python test_probe.py
 
-    - name: Restore cached packages
-      uses: actions/cache/restore@v3
-      id: cache
-      with:
-        path: |
-          /var/cache/apt/archives
-        key: apt-${{ runner.os }}-${{ hashFiles('**/apt.*') }}
-      if: runner.os == 'Linux'
-      
-    - name: Archives after restore
-      run: python test_probe.py
-      
-
-
-
-    - name: Installing my environnment
+    - name: Installing my environnment 1 
       run: |
-        chmod +x install_env.sh
-        ./install_env.sh
-      
-      
-    - name: Cache packages
-      uses: actions/cache/save@v3
-      with:
-        path: |
-          /var/cache/apt/archives
-        key: apt-${{ runner.os }}-${{ hashFiles('**/apt.*') }}
-      if: runner.os == 'Linux'
+        chmod +x install_env1.sh
+        ./install_env1.sh
+
+    - name: Installing my environnment 2 
+      run: |
+        chmod +x install_env2.sh
+        ./install_env2.sh
+
+
+    - name: Installing my environnment 3 
+      run: |
+        chmod +x install_env3.sh
+        ./install_env3.sh
 
     - name: Archives after save
       run: python test_probe.py
