@@ -21,7 +21,7 @@ jobs:
     - name: touch dummy
       run: touch dummy.txt
 
-    -name: exexuting my script
+    - name: exexuting my script
       run: |
         chmod +x dummy_script.sh
         ./dummy_script.sh
