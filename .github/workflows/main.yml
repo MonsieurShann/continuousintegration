@@ -22,19 +22,15 @@ jobs:
       id: cache-packages
       with:
         path: ${{ runner.temp }}/cache-linux
-        key: ${{ runner.os }}-cache-packages-v3.0
+        key: toto
         
     - name: Install packages
       if: steps.cache-packages.outputs.cache-hit != 'true'
-      env:
-        SOURCE: ${{ runner.temp }}/cache-linux
-      run: |
-          echo "NOOOOOOOOOOOOOOOOOOOOOOOOOOOON"
-          set +xv
-          echo "# --------------------------------------------------------"
-          echo "# Action environment variables"
-          echo "github.workspace: ${{ github.workspace }}"
-          echo "runner.workspace: ${{ runner.workspace }}"
+      run: echo "FAILED"
+      
+    - name: Dit it work
+      if: steps.cache-packages.outputs.cache-hit == 'true'
+      run: echo "WORKED"
 
     - name: Installing my environnment 1 
       run: |
