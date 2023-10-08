@@ -12,7 +12,7 @@ sudo apt-get install gawk wget git diffstat unzip texinfo gcc-multilib \
 
  #Dummy com from shann
 
- git config --global user.name "YMonsieurShann"
+ git config --global user.name "MonsieurShann"
  git config --global user.email "shannsagouma.ss@gmail.com"
 
 
@@ -28,3 +28,13 @@ repo sync -j$(nproc)
 
 cd /opt/var-fslc-yocto
 ls -lstr .
+
+cd /opt/var-fslc-yocto/
+echo "SHAAAAAAAAAANNN----------------- 1>"
+ls -lstr
+MACHINE=imx8mq-var-dart DISTRO=fslc-wayland . setup-environment build_wayland
+echo q
+echo y
+echo "SHAAAAAAAAAANNN----------------- 2 >"
+cd /opt/var-fslc-yocto
+source setup-environment build_wayland

@@ -24,17 +24,6 @@ jobs:
         chmod +x install_env1.sh
         ./install_env1.sh
 
-    - name: Installing my environnment 2 
-      run: |
-        chmod +x install_env2.sh
-        ./install_env2.sh
-
-
-    - name: Installing my environnment 3 
-      run: |
-        chmod +x install_env3.sh
-        ./install_env3.sh
-
     - name: Archives after save
       run: python test_probe.py
 
