@@ -34,4 +34,5 @@ FICHIER="setup-environment"
 sed -i 's/sleep 4/echo "ACCEPT_FSL_EULA = "1" >> conf\/local.conf"/' setup-environment
 sed -i "218,236d" setup-environment
 
-ls -lstr
+cd /opt/var-fslc-yocto/
+bitbake fsl-image-gui
