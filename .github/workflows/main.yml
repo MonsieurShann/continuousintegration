@@ -16,7 +16,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v3  # Utilisez la version 2 de l'action setup-python
       with:
-        python-version: 3.x  # Spécifiez la version Python que vous utilisez
+        python-version: 3.6  # Spécifiez la version Python que vous utilisez
 
     - uses: actions/cache@v3
       id: cache-packages
