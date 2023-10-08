@@ -27,15 +27,11 @@ repo init -u https://github.com/varigit/variscite-bsp-platform.git -b dunfell -m
 repo sync -j$(nproc)
 
 cd /opt/var-fslc-yocto
-ls -lstr .
 
-cd /opt/var-fslc-yocto/
-echo "SHAAAAAAAAAANNN----------------- 1>"
+# Le nom du fichier que vous voulez modifier
+FICHIER="setup-environment"
+
+sed -i 's/sleep 4/echo "ACCEPT_FSL_EULA = "1" >> conf\/local.conf"/' setup-environment
+sed -i "218,236d" setup-environment
+
 ls -lstr
-#MACHINE=imx8mq-var-dart DISTRO=fslc-wayland . setup-environment build_wayland
-echo q
-echo y
-echo "SHAAAAAAAAAANNN----------------- 2 >"
-cd /opt/var-fslc-yocto
-ls -lstr .
-#source setup-environment build_wayland
