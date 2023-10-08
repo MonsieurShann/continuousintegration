@@ -35,4 +35,8 @@ sed -i 's/sleep 4/echo "ACCEPT_FSL_EULA = "1" >> conf\/local.conf"/' setup-envir
 sed -i "218,236d" setup-environment
 
 cd /opt/var-fslc-yocto/
+MACHINE=imx8mq-var-dart DISTRO=fslc-wayland . setup-environment build_wayland
+cd /opt/var-fslc-yocto/
+source setup-environment build_wayland
+cd /opt/var-fslc-yocto/
 bitbake fsl-image-gui
