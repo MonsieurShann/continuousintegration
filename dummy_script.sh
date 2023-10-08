@@ -1,1 +1,0 @@
-touch dummy_script_executed.txt
