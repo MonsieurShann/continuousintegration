@@ -17,7 +17,24 @@ jobs:
       uses: actions/setup-python@v3  # Utilisez la version 2 de l'action setup-python
       with:
         python-version: 3.x  # Spécifiez la version Python que vous utilisez
-      
+
+    - uses: actions/cache@v3
+      id: cache-packages
+      with:
+        path: ${{ runner.temp }}/cache-linux
+        key: ${{ runner.os }}-cache-packages-v3.0
+        
+    - name: Install packages
+      if: steps.cache-packages.outputs.cache-hit != 'true'
+      env:
+        SOURCE: ${{ runner.temp }}/cache-linux
+      run: |
+          echo "NOOOOOOOOOOOOOOOOOOOOOOOOOOOON"
+          set +xv
+          echo "# --------------------------------------------------------"
+          echo "# Action environment variables"
+          echo "github.workspace: ${{ github.workspace }}"
+          echo "runner.workspace: ${{ runner.workspace }}"
 
     - name: Installing my environnment 1 
       run: |
