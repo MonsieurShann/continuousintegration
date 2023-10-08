@@ -24,13 +24,27 @@ jobs:
         path: ${{ runner.temp }}/cache-linux
         key: toto
         
+        
     - name: Install packages
       if: steps.cache-packages.outputs.cache-hit != 'true'
-      run: echo "FAILED"
+      env:
+        SOURCE: ${{ runner.temp }}/cache-linux
+      run: echo "Created a cash cause non existed"
       
     - name: Dit it work
       if: steps.cache-packages.outputs.cache-hit == 'true'
       run: echo "WORKED"
+
+    - name: Copy cached packages
+      if: steps.cache-packages.output.cache-hit == 'true'
+      env:
+        SOURCE: ${{ runner.temp }}/cache-linux
+      run: |
+          echo "# --------------------------------------------------------"
+          echo "# Using Cached packages"
+          ls -lha "${SOURCE}"
+          sudo cp --force --recursive "${SOURCE}"/. /
+          echo "# --------------------------------------------------------"
 
     - name: Installing my environnment 1 
       run: |
