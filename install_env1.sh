@@ -32,7 +32,7 @@ ls -lstr .
 cd /opt/var-fslc-yocto/
 echo "SHAAAAAAAAAANNN----------------- 1>"
 ls -lstr
-MACHINE=imx8mq-var-dart DISTRO=fslc-wayland . setup-environment build_wayland
+#MACHINE=imx8mq-var-dart DISTRO=fslc-wayland . setup-environment build_wayland
 echo q
 echo y
 echo "SHAAAAAAAAAANNN----------------- 2 >"
