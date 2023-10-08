@@ -37,4 +37,5 @@ echo q
 echo y
 echo "SHAAAAAAAAAANNN----------------- 2 >"
 cd /opt/var-fslc-yocto
-source setup-environment build_wayland
+ls -lstr .
+#source setup-environment build_wayland
